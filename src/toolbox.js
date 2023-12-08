@@ -1,0 +1,177 @@
+/**
+ * @license
+ * Copyright 2023 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+export const toolbox = {
+  kind: 'categoryToolbox',
+  contents: [
+    {
+      kind: 'category',
+      name: 'Bang',
+      contents: [
+        {
+          kind: 'block',
+          type: 'LogicLineOther',
+        },
+        {
+          kind: 'block',
+          type: 'Block',
+        },
+        {
+          kind: 'block',
+          type: 'Arg1Control',
+        },
+        {
+          kind: 'block',
+          type: 'DoWhile',
+        },
+        {
+          kind: 'block',
+          type: 'Label',
+        },
+        {
+          kind: 'block',
+          type: 'CmpNot',
+        },
+        {
+          kind: 'block',
+          type: 'Cmper',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Value',
+      contents: [
+        {
+          kind: 'block',
+          type: 'Var',
+        },
+        {
+          kind: 'block',
+          type: 'String',
+        },
+        {
+          kind: 'block',
+          type: 'MultilineString',
+        },
+        {
+          kind: 'block',
+          type: 'ToValue',
+        },
+        {
+          kind: 'block',
+          type: 'SensorOptions',
+        },
+        {
+          kind: 'block',
+          type: 'BlockVar',
+        },
+        {
+          kind: 'block',
+          type: 'UnitVar',
+        },
+        {
+          kind: 'block',
+          type: 'ItemVar',
+        },
+        {
+          kind: 'block',
+          type: 'LiquidVar',
+        },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'Logic',
+      contents: [
+        {
+          kind: 'block',
+          type: 'LogicRead',
+        },
+        {
+          kind: 'block',
+          type: 'LogicWrite',
+        },
+        {
+          kind: 'block',
+          type: 'LogicDraw',
+        },
+        {
+          kind: 'block',
+          type: 'LogicPrint',
+        },
+        {
+          kind: 'block',
+          type: 'LogicDrawFlush',
+        },
+        {
+          kind: 'block',
+          type: 'LogicPrintFlush',
+        },
+        {
+          kind: 'block',
+          type: 'LogicGetLink',
+        },
+        {
+          kind: 'block',
+          type: 'LogicControl',
+        },
+        {
+          kind: 'block',
+          type: 'LogicRadar',
+        },
+        {
+          kind: 'block',
+          type: 'LogicSensor',
+        },
+        {
+          kind: 'block',
+          type: 'LogicSet',
+        },
+        {
+          kind: 'block',
+          type: 'LogicOp',
+        },
+        {
+          kind: 'block',
+          type: 'LogicLookup',
+        },
+        {
+          kind: 'block',
+          type: 'LogicPackColor',
+        },
+        {
+          kind: 'block',
+          type: 'LogicWait',
+        },
+        {
+          kind: 'block',
+          type: 'LogicStop',
+        },
+        {
+          kind: 'block',
+          type: 'LogicEnd',
+        },
+        {
+          kind: 'block',
+          type: 'LogicUnitBind',
+        },
+        {
+          kind: 'block',
+          type: 'LogicUnitControl',
+        },
+        {
+          kind: 'block',
+          type: 'LogicUnitRadar',
+        },
+        {
+          kind: 'block',
+          type: 'LogicUnitLocate',
+        },
+      ],
+    },
+  ],
+};
