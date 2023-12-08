@@ -44,17 +44,18 @@ function setLabelSerializables(block, argsmap, argslen, name) {
  * %R => 反引号加单引号包裹
  */
 function logic_fmt(fmtter, ...args) {
+  const f = name => `${name}`.replace(RegExp("'", 'g'), '"');
   let id = 0;
   const result = fmtter.replace(/%[svrR]/g, s => {
     switch (s[1]) {
       case 's':
         return `${args[id++]}`;
       case 'v':
-        return `'${args[id++]}'`;
+        return `'${f(args[id++])}'`;
       case 'r':
         return `\`${args[id++]}\``;
       case 'R':
-        return `\`'${args[id++]}'\``;
+        return `\`'${f(args[id++])}'\``;
     }
   });
   if (id != args.length)
@@ -423,6 +424,11 @@ bangGenerator.forBlock['Cmper'] = function(block, generator) {
   return [`goto(${arg1} ${cmper} ${arg2})`, Order.ATOMIC];
 };
 
+bangGenerator.forBlock['CmpAlways'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  return [`goto(_)`, Order.ATOMIC];
+};
+
 bangGenerator.forBlock['ItemVar'] = function(block, generator) {
   if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
   const name = block.getFieldValue('ITEM');
@@ -552,9 +558,16 @@ bangGenerator.forBlock['LogicUnitLocate'] = function(block, generator) {
     arg5, arg6, arg7
   );
 }
+
 bangGenerator.forBlock['DoWhile'] = function(block, generator) {
   if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
   const next_stmts = generator.statementToCode(block, 'LINES');
   const code = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
   return `do {\n${next_stmts}\n} while ${code};`;
+};
+
+bangGenerator.forBlock['Goto'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const [label, value] = valueToCodes(generator, block, 'LABEL', 'VALUE');
+  return logic_fmt('goto :%s %s;', label, value);
 };

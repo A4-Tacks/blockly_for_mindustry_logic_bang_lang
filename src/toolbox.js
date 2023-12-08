@@ -25,6 +25,10 @@ export const toolbox = {
         },
         {
           kind: 'block',
+          type: 'Goto',
+        },
+        {
+          kind: 'block',
           type: 'DoWhile',
         },
         {
@@ -33,11 +37,15 @@ export const toolbox = {
         },
         {
           kind: 'block',
+          type: 'Cmper',
+        },
+        {
+          kind: 'block',
           type: 'CmpNot',
         },
         {
           kind: 'block',
-          type: 'Cmper',
+          type: 'CmpAlways',
         },
       ],
     },

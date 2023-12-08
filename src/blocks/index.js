@@ -764,7 +764,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: 'field_dropdown',
         name: 'CMPER',
         options: [
-          ['_', '_'],
           ['==', '=='],
           ['!=', '!='],
           ['<', '<'],
@@ -783,6 +782,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     inputsInline: true,
+    output: 'Value',
+    colour: 110,
+  },
+  {
+    type: 'CmpAlways',
+    message0: 'CmpAlways',
     output: 'Value',
     colour: 110,
   },
@@ -1570,6 +1575,26 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         check: 'Value',
       },
     ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'Goto',
+    message0: 'Goto :%1 %2',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'LABEL',
+        check: 'Var',
+      },
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'Value',
+      },
+    ],
+    inputsInline: true,
     previousStatement: null,
     nextStatement: null,
     colour: 250,
