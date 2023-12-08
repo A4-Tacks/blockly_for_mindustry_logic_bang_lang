@@ -25,6 +25,10 @@ export const toolbox = {
         },
         {
           kind: 'block',
+          type: 'Else',
+        },
+        {
+          kind: 'block',
           type: 'Goto',
         },
         {
@@ -37,15 +41,15 @@ export const toolbox = {
         },
         {
           kind: 'block',
-          type: 'Cmper',
+          type: 'Const',
         },
         {
           kind: 'block',
-          type: 'CmpNot',
+          type: 'Take',
         },
         {
           kind: 'block',
-          type: 'CmpAlways',
+          type: 'Source',
         },
       ],
     },
@@ -60,6 +64,30 @@ export const toolbox = {
         {
           kind: 'block',
           type: 'String',
+        },
+        {
+          kind: 'block',
+          type: 'DExp',
+        },
+        {
+          kind: 'block',
+          type: 'ResultHandle',
+        },
+        {
+          kind: 'block',
+          type: 'Cmper',
+        },
+        {
+          kind: 'block',
+          type: 'CmpNot',
+        },
+        {
+          kind: 'block',
+          type: 'CmpAlways',
+        },
+        {
+          kind: 'block',
+          type: 'QuickTake',
         },
         {
           kind: 'block',

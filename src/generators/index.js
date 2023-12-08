@@ -571,3 +571,66 @@ bangGenerator.forBlock['Goto'] = function(block, generator) {
   const [label, value] = valueToCodes(generator, block, 'LABEL', 'VALUE');
   return logic_fmt('goto :%s %s;', label, value);
 };
+
+bangGenerator.forBlock['Source'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const source = block.getFieldValue('SOURCE');
+  return source;
+};
+
+bangGenerator.forBlock['Else'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const next_stmts = generator.statementToCode(block, 'LINES');
+  return `else {\n${next_stmts}\n}`;
+};
+
+bangGenerator.forBlock['DExp'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const lines = generator.statementToCode(block, 'LINES');
+  const result = generator.valueToCode(block, 'RESULT', Order.ATOMIC);
+  const result_text = result ? result + ': ' : '';
+  return [`(${result_text}\n${lines}\n)`, Order.ATOMIC];
+};
+
+bangGenerator.forBlock['ResultHandle'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  return ['$', Order.ATOMIC];
+};
+
+bangGenerator.forBlock['Else'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const next_stmts = generator.statementToCode(block, 'LINES');
+  return `else {\n${next_stmts}\n}`;
+};
+
+bangGenerator.forBlock['DExp'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const lines = generator.statementToCode(block, 'LINES');
+  const result = generator.valueToCode(block, 'RESULT', Order.ATOMIC);
+  const result_text = result ? result + ': ' : '';
+  return [`(${result_text}\n${lines}\n)`, Order.ATOMIC];
+};
+
+bangGenerator.forBlock['Const'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const [name, value] = valueToCodes(generator, block, 'NAME', 'VALUE');
+  return `const ${name} = ${value};`;
+};
+
+bangGenerator.forBlock['Take'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const [name, value] = valueToCodes(generator, block, 'NAME', 'VALUE');
+  return `take ${name} = ${value};`;
+};
+
+bangGenerator.forBlock['QuickTake'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const [name] = valueToCodes(generator, block, 'VAR');
+  const args = [];
+  for (let i = 0; i < 10; i++) {
+    const name = `ARG${i}`;
+    const code = generator.valueToCode(block, name, Order.ATOMIC);
+    if (code) args.push(code);
+  }
+  return [`${name}[${args.join(' ')}]`, Order.ATOMIC];
+};

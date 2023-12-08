@@ -131,6 +131,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
           ['while', 'while'],
           ['skip', 'skip'],
           ['select', 'select'],
+          ['if', 'if'],
+          ['elif', 'elif'],
+          ['switch', 'switch'],
         ],
       },
       {
@@ -1598,5 +1601,158 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     previousStatement: null,
     nextStatement: null,
     colour: 250,
+  },
+  {
+    type: 'Source',
+    message0: 'Source%1',
+    args0: [
+      {
+        type: 'field_input',
+        name: 'SOURCE',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'Else',
+    message0: 'else %1',
+    args0: [
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'DExp',
+    message0: 'DExp%1%2',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'RESULT',
+        check: 'Var',
+      },
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    output: 'Value',
+    colour: 110,
+  },
+  {
+    type: 'ResultHandle',
+    message0: 'ResultHandle $',
+    args0: [],
+    output: 'Value',
+    colour: 110,
+  },
+  {
+    type: 'Const',
+    message0: 'const %1 = %2',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'NAME',
+        check: 'Var',
+      },
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'Value',
+      },
+    ],
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'Take',
+    message0: 'take %1 = %2',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'NAME',
+        check: 'Var',
+      },
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'Value',
+      },
+    ],
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'QuickTake',
+    message0: 'QuickTake%1[%2%3%4%5%6%7%8%9%10%11]',
+    args0: [
+      {
+        type: 'input_value',
+        name: 'VAR',
+        check: 'Var',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG0',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG1',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG2',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG3',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG4',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG5',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG6',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG7',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG8',
+        check: 'Value',
+      },
+      {
+        type: 'input_value',
+        name: 'ARG9',
+        check: 'Value',
+      },
+    ],
+    output: 'Value',
+    colour: 110,
   },
 ]);
