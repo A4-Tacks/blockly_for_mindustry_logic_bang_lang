@@ -7,21 +7,21 @@
 import * as Blockly from 'blockly';
 
 const radar_target = [
-  ['any', 'any'],
-  ['enemy', 'enemy'],
-  ['ally', 'ally'],
-  ['player', 'player'],
-  ['attacker', 'attacker'],
-  ['flying', 'flying'],
-  ['boss', 'boss'],
-  ['ground', 'ground'],
+  ['任意', 'any'],
+  ['敌方', 'enemy'],
+  ['友方', 'ally'],
+  ['玩家', 'player'],
+  ['有攻击能力的', 'attacker'],
+  ['飞行的', 'flying'],
+  ['BOSS', 'boss'],
+  ['地面的', 'ground'],
 ];
 const radar_sort = [
-  ['distance', 'distance'],
-  ['health', 'health'],
-  ['shield', 'shield'],
-  ['armor', 'armor'],
-  ['maxHealth', 'maxHealth'],
+  ['距离', 'distance'],
+  ['血量', 'health'],
+  ['盾量', 'shield'],
+  ['护甲', 'armor'],
+  ['血量上限', 'maxHealth'],
 ];
 
 export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
@@ -128,12 +128,12 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['while', 'while'],
-          ['skip', 'skip'],
-          ['select', 'select'],
-          ['if', 'if'],
-          ['elif', 'elif'],
-          ['switch', 'switch'],
+          ['循环', 'while'],
+          ['跳过', 'skip'],
+          ['选择', 'select'],
+          ['分支', 'if'],
+          ['否则分支', 'elif'],
+          ['分支', 'switch'],
         ],
       },
       {
@@ -152,7 +152,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicRead',
-    message0: 'Read %1 %2 %3',
+    message0: '读取 %1 %2 %3',
     args0: [
       {
         type: 'input_value',
@@ -177,7 +177,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicWrite',
-    message0: 'Write %1 %2 %3',
+    message0: '写入 %1 %2 %3',
     args0: [
       {
         type: 'input_value',
@@ -202,23 +202,23 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicDraw',
-    message0: 'Draw %1%2%3%4%5%6%7%8%9%10%11%12%13',
+    message0: '绘制 %1%2%3%4%5%6%7%8%9%10%11%12%13',
     args0: [
       {
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['clear', 'clear'],
-          ['color', 'color'],
-          ['col', 'col'],
-          ['stroke', 'stroke'],
-          ['line', 'line'],
-          ['rect', 'rect'],
-          ['lineRect', 'lineRect'],
-          ['poly', 'poly'],
-          ['linePoly', 'linePoly'],
-          ['triangle', 'triangle'],
-          ['image', 'image'],
+          ['刷写', 'clear'],
+          ['颜色', 'color'],
+          ['打包颜色', 'col'],
+          ['粗细', 'stroke'],
+          ['线', 'line'],
+          ['矩形', 'rect'],
+          ['中空矩形', 'lineRect'],
+          ['圆', 'poly'],
+          ['中空圆', 'linePoly'],
+          ['三角形', 'triangle'],
+          ['图像', 'image'],
         ],
       },
       {
@@ -283,7 +283,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicPrint',
-    message0: 'Print %1',
+    message0: '打印 %1',
     args0: [
       {
         type: 'input_value',
@@ -297,7 +297,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     colour: 250,
   },
   { type: 'LogicDrawFlush',
-    message0: 'DrawFlush %1',
+    message0: '输出绘制 %1',
     args0: [
       {
         type: 'input_value',
@@ -312,7 +312,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicPrintFlush',
-    message0: 'PrintFlush %1',
+    message0: '输出打印 %1',
     args0: [
       {
         type: 'input_value',
@@ -327,7 +327,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicGetLink',
-    message0: 'GetLink %1= link#%2',
+    message0: '获取链接 %1= link#%2',
     args0: [
       {
         type: 'input_value',
@@ -347,17 +347,17 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicControl',
-    message0: 'Control set%1of%2%3%4%5%6%7%8%9%10',
+    message0: '控制 设置%2的%1%3%4%5%6%7%8%9%10',
     args0: [
       {
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['enabled', 'enabled'],
-          ['shoot', 'shoot'],
-          ['shootp', 'shootp'],
-          ['config', 'config'],
-          ['color', 'color'],
+          ['启用', 'enabled'],
+          ['射击', 'shoot'],
+          ['射击单位', 'shootp'],
+          ['设置', 'config'],
+          ['颜色', 'color'],
         ],
       },
       {
@@ -409,7 +409,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicRadar',
-    message0: 'Radar from%1target%2and%3and%4order%5sort%6output%7',
+    message0: '雷达 从%1条件%2且%3且%4是否正序%5排序依据%6输出量%7',
     args0: [
       {
         type: 'input_value',
@@ -454,58 +454,58 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'SensorOptions',
-    message0: 'SensorOpt @%1',
+    message0: '传感器选项 @%1',
     args0: [
       {
         type: 'field_dropdown',
         name: 'OPTION',
         options: [
-          ['totalItems', 'totalItems'],
-          ['firstItem', 'firstItem'],
-          ['totalLiquids', 'totalLiquids'],
-          ['totalPower', 'totalPower'],
-          ['itemCapacity', 'itemCapacity'],
-          ['liquidCapacity', 'liquidCapacity'],
-          ['powerCapacity', 'powerCapacity'],
-          ['powerNetStored', 'powerNetStored'],
-          ['powerNetCapacity', 'powerNetCapacity'],
-          ['powerNetIn', 'powerNetIn'],
-          ['powerNetOut', 'powerNetOut'],
-          ['ammo', 'ammo'],
-          ['ammoCapacity', 'ammoCapacity'],
-          ['health', 'health'],
-          ['maxHealth', 'maxHealth'],
-          ['heat', 'heat'],
-          ['shield', 'shield'],
-          ['efficiency', 'efficiency'],
-          ['progress', 'progress'],
-          ['timescale', 'timescale'],
-          ['rotation', 'rotation'],
+          ['总物品数', 'totalItems'],
+          ['第一个物品', 'firstItem'],
+          ['总液体数', 'totalLiquids'],
+          ['总电力', 'totalPower'],
+          ['物品容量', 'itemCapacity'],
+          ['液体容量', 'liquidCapacity'],
+          ['电力容量', 'powerCapacity'],
+          ['电网储电', 'powerNetStored'],
+          ['电网电容量', 'powerNetCapacity'],
+          ['电网净输入', 'powerNetIn'],
+          ['电网净输出', 'powerNetOut'],
+          ['弹药', 'ammo'],
+          ['弹药容量', 'ammoCapacity'],
+          ['血量', 'health'],
+          ['血量上限', 'maxHealth'],
+          ['热量', 'heat'],
+          ['盾', 'shield'],
+          ['效率', 'efficiency'],
+          ['进度', 'progress'],
+          ['时间比例', 'timescale'],
+          ['朝向', 'rotation'],
           ['x', 'x'],
           ['y', 'y'],
-          ['shootX', 'shootX'],
-          ['shootY', 'shootY'],
-          ['size', 'size'],
-          ['dead', 'dead'],
-          ['range', 'range'],
-          ['shooting', 'shooting'],
-          ['boosting', 'boosting'],
-          ['mineX', 'mineX'],
-          ['mineY', 'mineY'],
-          ['mining', 'mining'],
-          ['speed', 'speed'],
-          ['team', 'team'],
-          ['type', 'type'],
-          ['flag', 'flag'],
-          ['controlled', 'controlled'],
-          ['controller', 'controller'],
-          ['name', 'name'],
-          ['payloadCount', 'payloadCount'],
-          ['payloadType', 'payloadType'],
-          ['id', 'id'],
-          ['enabled', 'enabled'],
-          ['config', 'config'],
-          ['color', 'color'],
+          ['射击点X', 'shootX'],
+          ['射击点Y', 'shootY'],
+          ['大小', 'size'],
+          ['已死亡', 'dead'],
+          ['范围', 'range'],
+          ['是否射击', 'shooting'],
+          ['是否助推', 'boosting'],
+          ['挖矿点X', 'mineX'],
+          ['挖矿点Y', 'mineY'],
+          ['是否正在挖矿', 'mining'],
+          ['速度', 'speed'],
+          ['队伍', 'team'],
+          ['类型', 'type'],
+          ['标记', 'flag'],
+          ['已控制', 'controlled'],
+          ['控制者', 'controller'],
+          ['名称', 'name'],
+          ['荷载数量', 'payloadCount'],
+          ['荷载类型', 'payloadType'],
+          ['编号', 'id'],
+          ['启用', 'enabled'],
+          ['设置', 'config'],
+          ['颜色', 'color'],
         ],
       },
     ],
@@ -514,7 +514,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicSensor',
-    message0: 'Sensor%1=%2in%3',
+    message0: '传感器%1=%3的%2属性',
     args0: [
       {
         type: 'input_value',
@@ -539,7 +539,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicSet',
-    message0: 'Set%1=%2',
+    message0: '设置%1=%2',
     args0: [
       {
         type: 'input_value',
@@ -559,7 +559,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicOp',
-    message0: 'Op%1=%2%3%4',
+    message0: '运算%1=%2%3%4',
     args0: [
       {
         type: 'input_value',
@@ -591,25 +591,25 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
           ['&', 'and'],
           ['^', 'xor'],
           ['~', 'not'],
-          ['max', 'max'],
-          ['min', 'min'],
-          ['angle', 'angle'],
+          ['最大值', 'max'],
+          ['最小值', 'min'],
+          ['幅度角', 'angle'],
           ['angleDiff', 'angleDiff'],
-          ['len', 'len'],
-          ['noise', 'noise'],
-          ['abs', 'abs'],
-          ['log', 'log'],
-          ['log10', 'log10'],
-          ['floor', 'floor'],
-          ['ceil', 'ceil'],
-          ['sqrt', 'sqrt'],
-          ['rand', 'rand'],
-          ['sin', 'sin'],
-          ['cos', 'cos'],
-          ['tan', 'tan'],
-          ['asin', 'asin'],
-          ['acos', 'acos'],
-          ['atan', 'atan'],
+          ['模长', 'len'],
+          ['二维单形噪声', 'noise'],
+          ['绝对值', 'abs'],
+          ['自然对数', 'log'],
+          ['底10对数', 'log10'],
+          ['向下圆整', 'floor'],
+          ['向上圆整', 'ceil'],
+          ['平方', 'sqrt'],
+          ['随机', 'rand'],
+          ['正弦', 'sin'],
+          ['余弦', 'cos'],
+          ['正切', 'tan'],
+          ['反正弦', 'asin'],
+          ['反余弦', 'acos'],
+          ['反正切', 'atan'],
         ],
       },
       {
@@ -630,7 +630,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicLookup',
-    message0: 'Lookup%1= lookup%2#%3',
+    message0: '编号选择%1= %2编号#%3',
     args0: [
       {
         type: 'input_value',
@@ -641,10 +641,10 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['block', 'block'],
-          ['unit', 'unit'],
-          ['item', 'item'],
-          ['liquid', 'liquid'],
+          ['方块', 'block'],
+          ['单位', 'unit'],
+          ['物品', 'item'],
+          ['液体', 'liquid'],
         ],
       },
       {
@@ -660,7 +660,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicPackColor',
-    message0: 'PackColor %1= pack%2%3%4%5',
+    message0: '打包颜色 %1= pack%2%3%4%5',
     args0: [
       {
         type: 'input_value',
@@ -695,7 +695,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicWait',
-    message0: 'Wait %1',
+    message0: '等待 %1秒',
     args0: [
       {
         type: 'input_value',
@@ -710,7 +710,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicStop',
-    message0: 'Stop',
+    message0: '停止',
     args0: [],
     inputsInline: true,
     previousStatement: null,
@@ -719,7 +719,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicEnd',
-    message0: 'End',
+    message0: '结束',
     args0: [],
     inputsInline: true,
     previousStatement: null,
@@ -743,7 +743,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'CmpNot',
-    message0: 'CmpNot%1',
+    message0: '比较非%1',
     args0: [
       {
         type: 'input_value',
@@ -756,7 +756,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'Cmper',
-    message0: 'Cmper%1%2%3',
+    message0: '比较%1%2%3',
     args0: [
       {
         type: 'input_value',
@@ -774,8 +774,8 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
           ['>', '>'],
           ['>=', '>='],
           ['===', '==='],
-          ['||', '||'],
-          ['&&', '&&'],
+          ['或', '||'],
+          ['与', '&&'],
         ],
       },
       {
@@ -790,13 +790,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'CmpAlways',
-    message0: 'CmpAlways',
+    message0: '永真比较',
     output: 'Value',
     colour: 110,
   },
   {
     type: 'ItemVar',
-    message0: 'Item @%1',
+    message0: '物品 @%1',
     args0: [
       {
         type: 'field_dropdown',
@@ -833,7 +833,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'UnitVar',
-    message0: 'Unit @%1',
+    message0: '单位 @%1',
     args0: [
       {
         type: 'field_dropdown',
@@ -912,7 +912,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'BlockVar',
-    message0: 'Block @%1',
+    message0: '方块 @%1',
     args0: [
       {
         type: 'field_dropdown',
@@ -1307,7 +1307,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LiquidVar',
-    message0: 'Liquid @%1',
+    message0: '液体 @%1',
     args0: [
       {
         type: 'field_dropdown',
@@ -1348,32 +1348,32 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicUnitControl',
-    message0: 'UnitControl%1%2%3%4%5%6%7%8%9%10%11',
+    message0: '单位控制%1%2%3%4%5%6%7%8%9%10%11',
     args0: [
       {
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['idle', 'idle'],
-          ['stop', 'stop'],
-          ['move', 'move'],
-          ['approach', 'approach'],
-          ['pathfind', 'pathfind'],
-          ['autoPathfind', 'autoPathfind'],
-          ['boost', 'boost'],
-          ['target', 'target'],
-          ['targetp', 'targetp'],
-          ['itemDrop', 'itemDrop'],
-          ['itemTake', 'itemTake'],
-          ['payDrop', 'payDrop'],
-          ['payTake', 'payTake'],
-          ['payEnter', 'payEnter'],
-          ['mine', 'mine'],
-          ['flag', 'flag'],
-          ['build', 'build'],
-          ['getBlock', 'getBlock'],
-          ['within', 'within'],
-          ['unbind', 'unbind'],
+          ['闲置', 'idle'],
+          ['停止', 'stop'],
+          ['移动', 'move'],
+          ['接近', 'approach'],
+          ['路径寻路', 'pathfind'],
+          ['自动寻路', 'autoPathfind'],
+          ['助推', 'boost'],
+          ['射击', 'target'],
+          ['射击单位', 'targetp'],
+          ['放入物品', 'itemDrop'],
+          ['拿取物品', 'itemTake'],
+          ['放下荷载', 'payDrop'],
+          ['拿起荷载', 'payTake'],
+          ['进入荷载', 'payEnter'],
+          ['挖矿', 'mine'],
+          ['设置标记', 'flag'],
+          ['建造', 'build'],
+          ['获取方块', 'getBlock'],
+          ['判断接近', 'within'],
+          ['解绑', 'unbind'],
         ],
       },
       {
@@ -1429,7 +1429,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicUnitRadar',
-    message0: 'UnitRadar target%1and%2and%3order%4sort%5output%6',
+    message0: '单位雷达 条件%1且%2且%3是否正序%4排序依据%5输出量%6',
     args0: [
       {
         type: 'field_dropdown',
@@ -1469,16 +1469,16 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicUnitLocate',
-    message0: 'UnitLocate find%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15',
+    message0: '单位定位 寻找%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15',
     args0: [
       {
         type: 'field_dropdown',
         name: 'TYPE',
         options: [
-          ['building', 'building'],
-          ['ore', 'ore'],
-          ['spawn', 'spawn'],
-          ['damaged', 'damaged'],
+          ['建筑', 'building'],
+          ['矿物', 'ore'],
+          ['敌方出生点', 'spawn'],
+          ['己方受损建筑', 'damaged'],
         ],
       },
       {
@@ -1489,15 +1489,15 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: 'field_dropdown',
         name: 'ARG1',
         options: [
-          ['core', 'core'],
-          ['storage', 'storage'],
-          ['generator', 'generator'],
-          ['turret', 'turret'],
-          ['factory', 'factory'],
-          ['repair', 'repair'],
-          ['rally', 'rally'],
-          ['battery', 'battery'],
-          ['reactor', 'reactor'],
+          ['核心', 'core'],
+          ['仓库', 'storage'],
+          ['发电机', 'generator'],
+          ['炮塔', 'turret'],
+          ['工厂', 'factory'],
+          ['修复器', 'repair'],
+          ['指挥中心', 'rally'],
+          ['电池', 'battery'],
+          ['反应堆', 'reactor'],
         ],
       },
       {
@@ -1564,7 +1564,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     type: 'DoWhile',
     message0: 'do {',
     message1: '%1',
-    message2: '} while%1',
+    message2: '} 循环%1',
     args1: [
       {
         type: 'input_statement',
@@ -1584,7 +1584,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'Goto',
-    message0: 'Goto :%1 %2',
+    message0: '跳转 :%1 %2',
     args0: [
       {
         type: 'input_value',
@@ -1617,7 +1617,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'Else',
-    message0: 'else %1',
+    message0: '否则 %1',
     args0: [
       {
         type: 'input_statement',
@@ -1647,7 +1647,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'ResultHandle',
-    message0: 'ResultHandle $',
+    message0: '返回句柄 $',
     args0: [],
     output: 'Value',
     colour: 110,

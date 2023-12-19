@@ -184,7 +184,7 @@ bangGenerator.forBlock['LogicDraw'] = function(block, generator) {
       set_texts(['r', 'g', 'b', 'a', '', '']);
       break;
     case 'col':
-      set_texts(['color', '', '', '', '', '']);
+      set_texts(['颜色', '', '', '', '', '']);
       break;
     case 'stroke':
       set_texts(['', '', '', '', '', '']);
@@ -194,17 +194,17 @@ bangGenerator.forBlock['LogicDraw'] = function(block, generator) {
       break;
     case 'rect':
     case 'lineRect':
-      set_texts(['x', 'y', 'width', 'height', '', '']);
+      set_texts(['x', 'y', '宽', '高', '', '']);
       break;
     case 'poly':
     case 'linePoly':
-      set_texts(['x', 'y', 'sides', 'radius', 'rotation', '']);
+      set_texts(['x', 'y', '边数', '半径', '角度', '']);
       break;
     case 'triangle':
       set_texts(['x', 'y', 'x2', 'y2', 'x3', 'y3']);
       break;
     case 'image':
-      set_texts(['x', 'y', 'image', 'size', 'rotation', '']);
+      set_texts(['x', 'y', '图像', '大小', '角度', '']);
       break;
   }
   return logic_fmt('%r %s %s %s %s %s %s %s;',
@@ -274,13 +274,13 @@ bangGenerator.forBlock['LogicControl'] = function(block, generator) {
     case 'enabled':
     case 'config':
     case 'color': // 旧逻辑为[r, g, b]
-      set_texts(['to', '', '', '']);
+      set_texts(['为', '', '', '']);
       break;
     case 'shoot':
-      set_texts(['x', 'y', 'shoot', '']);
+      set_texts(['x', 'y', '是否射击', '']);
       break;
     case 'shootp':
-      set_texts(['unit', 'shoot', '', '']);
+      set_texts(['目标单位', '是否射击', '', '']);
       break;
   }
   return logic_fmt('%r %s %s %s %s %s %s;',
@@ -478,23 +478,23 @@ bangGenerator.forBlock['LogicUnitControl'] = function(block, generator) {
   const arg_texts = {
     idle: [],
     stop: [],
-    move: ["x", "y"],
-    approach: ["x", "y", "radius"],
-    pathfind: ["x", "y"],
+    move: ['x', 'y'],
+    approach: ['x', 'y', '半径'],
+    pathfind: ['x', 'y'],
     autoPathfind: [],
-    boost: ["enable"],
-    target: ["x", "y", "shoot"],
-    targetp: ["unit", "shoot"],
-    itemDrop: ["to", "amount"],
-    itemTake: ["from", "item", "amount"],
+    boost: ['是否启动'],
+    target: ['x', 'y', '是否射击'],
+    targetp: ['目标单位', '是否射击'],
+    itemDrop: ['到', '数量'],
+    itemTake: ['从', '物品', '数量'],
     payDrop: [],
-    payTake: ["takeUnits"],
+    payTake: ['拿取单位数'],
     payEnter: [],
-    mine: ["x", "y"],
-    flag: ["value"],
-    build: ["x", "y", "block", "rotation", "config"],
-    getBlock: ["x", "y", "type", "building", "floor"],
-    within: ["x", "y", "radius", "result"],
+    mine: ['x', 'y'],
+    flag: ['值'],
+    build: ['x', 'y', '方块', '朝向', '设置'],
+    getBlock: ['x', 'y', '类型', '建筑', '地板'],
+    within: ['x', 'y', '半径', '返回值'],
     unbind: [],
   };
   const set_texts = setLabelSerializables(
@@ -540,10 +540,10 @@ bangGenerator.forBlock['LogicUnitLocate'] = function(block, generator) {
     'ARG7',
   );
   const arg_texts = {
-    building: ['group', 'enemy', '', 'outX', 'outY', 'found', 'building'],
-    ore: ['', '', 'ore', 'outX', 'outY', 'found'],
-    spawn: ['', '', '', 'outX', 'outY', 'found', 'building'],
-    damaged: ['', '', '', 'outX', 'outY', 'found', 'building'],
+    building: ['组', '是否为敌方', '', '输出X', '输出Y', '是否找到', '建筑'],
+    ore: ['', '', '矿物', '输出X', '输出Y', '是否找到'],
+    spawn: ['', '', '', '输出X', '输出Y', '是否找到', '建筑'],
+    damaged: ['', '', '', '输出X', '输出Y', '是否找到', '建筑'],
   };
   const set_texts = setLabelSerializables(
     block,
