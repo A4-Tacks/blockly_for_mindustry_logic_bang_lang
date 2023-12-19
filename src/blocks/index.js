@@ -131,9 +131,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
           ['循环', 'while'],
           ['跳过', 'skip'],
           ['选择', 'select'],
-          ['分支', 'if'],
+          ['条件分支', 'if'],
           ['否则分支', 'elif'],
-          ['分支', 'switch'],
+          ['switch分支', 'switch'],
         ],
       },
       {
