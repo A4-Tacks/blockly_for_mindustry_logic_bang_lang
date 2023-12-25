@@ -634,3 +634,38 @@ bangGenerator.forBlock['QuickTake'] = function(block, generator) {
   }
   return [`${name}[${args.join(' ')}]`, Order.ATOMIC];
 };
+
+bangGenerator.forBlock['SwitchCase'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const id = block.getFieldValue('ID');
+  return `case ${id}:`
+};
+
+bangGenerator.forBlock['ControlPlus'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const type = block.getFieldValue('TYPE');
+  const [cmp] = valueToCodes(generator, block, 'VALUE');
+  return `${type} ${cmp};`
+};
+
+bangGenerator.forBlock['ControlBlock'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  while (true) {
+    const [break_val, continue_val] = getFieldValues(
+      block, 'BREAK_TYPE', 'CONTINUE_TYPE'
+    );
+    if (! (break_val || continue_val)) {
+      block.setFieldValue('break', 'BREAK_TYPE');
+      continue;
+    }
+    const f = str => str ? str + ' ' : str;
+    const lines = generator.statementToCode(block, 'LINES');
+    return `${f(break_val)}${f(continue_val)}{\n${lines}\n}`
+  }
+};
+
+bangGenerator.forBlock['InlineBlock'] = function(block, generator) {
+  if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
+  const lines = generator.statementToCode(block, 'LINES');
+  return `inline {\n${lines}\n}`
+};

@@ -1755,4 +1755,90 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     output: 'Value',
     colour: 110,
   },
+  {
+    type: 'SwitchCase',
+    message0: 'case %1:',
+    args0: [
+      {
+        type: 'field_input',
+        name: 'ID',
+        text: '0',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'ControlPlus',
+    message0: '%1%2',
+    args0: [
+      {
+        type: 'field_dropdown',
+        name: 'TYPE',
+        options: [
+          ['break', 'break'],
+          ['continue', 'continue'],
+        ],
+      },
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'Value',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'ControlBlock',
+    message0: '%1 %2 {',
+    args0: [
+      {
+        type: 'field_dropdown',
+        name: 'BREAK_TYPE',
+        options: [
+          ['break', 'break'],
+          ['break!', 'break!'],
+          ['unused', ''],
+        ],
+      },
+      {
+        type: 'field_dropdown',
+        name: 'CONTINUE_TYPE',
+        options: [
+          ['continue', 'continue'],
+          ['continue!', 'continue!'],
+          ['unused', ''],
+        ],
+      },
+    ],
+    message1: '%1',
+    args1: [
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    message2: '}',
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'InlineBlock',
+    message0: 'inline {',
+    message1: '%1',
+    args1: [
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    message2: '}',
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
 ]);
