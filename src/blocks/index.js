@@ -1617,8 +1617,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'Else',
-    message0: 'else %1',
-    args0: [
+    message0: 'else',
+    message1: '%1',
+    args1: [
       {
         type: 'input_statement',
         name: 'LINES',
