@@ -37,3 +37,8 @@ pre, code {
 #output {
     height: 50%;
 }
+
+#dataInputBox {
+  font-family: "Gill Sans Extrabold", monospace;
+  outline-style: inset;
+}
