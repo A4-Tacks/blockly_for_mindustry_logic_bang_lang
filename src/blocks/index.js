@@ -1617,8 +1617,9 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'Else',
-    message0: '否则 %1',
-    args0: [
+    message0: '否则',
+    message1: '%1',
+    args1: [
       {
         type: 'input_statement',
         name: 'LINES',
@@ -1754,5 +1755,91 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     output: 'Value',
     colour: 110,
+  },
+  {
+    type: 'SwitchCase',
+    message0: 'switch子分支 %1:',
+    args0: [
+      {
+        type: 'field_input',
+        name: 'ID',
+        text: '0',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'ControlPlus',
+    message0: '%1%2',
+    args0: [
+      {
+        type: 'field_dropdown',
+        name: 'TYPE',
+        options: [
+          ['中断', 'break'],
+          ['继续', 'continue'],
+        ],
+      },
+      {
+        type: 'input_value',
+        name: 'VALUE',
+        check: 'Value',
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'ControlBlock',
+    message0: '%1 %2 {',
+    args0: [
+      {
+        type: 'field_dropdown',
+        name: 'BREAK_TYPE',
+        options: [
+          ['中断', 'break'],
+          ['反向中断', 'break!'],
+          ['未使用', ''],
+        ],
+      },
+      {
+        type: 'field_dropdown',
+        name: 'CONTINUE_TYPE',
+        options: [
+          ['继续', 'continue'],
+          ['反向继续', 'continue!'],
+          ['未使用', ''],
+        ],
+      },
+    ],
+    message1: '%1',
+    args1: [
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    message2: '}',
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
+  },
+  {
+    type: 'InlineBlock',
+    message0: '内联 {',
+    message1: '%1',
+    args1: [
+      {
+        type: 'input_statement',
+        name: 'LINES',
+      },
+    ],
+    message2: '}',
+    previousStatement: null,
+    nextStatement: null,
+    colour: 250,
   },
 ]);

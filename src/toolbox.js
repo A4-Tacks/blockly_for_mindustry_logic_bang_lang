@@ -29,7 +29,15 @@ export const toolbox = {
         },
         {
           kind: 'block',
+          type: 'SwitchCase',
+        },
+        {
+          kind: 'block',
           type: 'Goto',
+        },
+        {
+          kind: 'block',
+          type: 'ControlPlus',
         },
         {
           kind: 'block',
@@ -46,6 +54,14 @@ export const toolbox = {
         {
           kind: 'block',
           type: 'Take',
+        },
+        {
+          kind: 'block',
+          type: 'ControlBlock',
+        },
+        {
+          kind: 'block',
+          type: 'InlineBlock',
         },
         {
           kind: 'block',
