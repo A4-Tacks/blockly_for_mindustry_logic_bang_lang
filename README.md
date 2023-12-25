@@ -8,3 +8,7 @@
 
 项目的构建可以使用`yarn build`, 这会调用依赖中的webpack进行构建,
 并生成一个`dist`目录, 直接访问该目录中的`index.html`即可
+
+本项目具有中文补丁, 请查看 [chinese-patch] 分支
+
+[chinese-patch]: https://github.com/A4-Tacks/blockly_for_mindustry_logic_bang_lang/tree/chinese-patch
