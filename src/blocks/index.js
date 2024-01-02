@@ -6,6 +6,17 @@
 
 import * as Blockly from 'blockly';
 
+const color = {
+  block: '#D4816B',
+  control: '#6BB2B2',
+  operation: '#877BAD',
+  io: '#A08A8A',
+  unit: '#C7B59D',
+  world: '#6B84D4',
+  var: 110,
+  bang: 250,
+};
+
 const radar_target = [
   ['任意', 'any'],
   ['敌方', 'enemy'],
@@ -48,7 +59,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Var',
@@ -61,7 +72,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'String',
@@ -74,7 +85,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'MultilineString',
@@ -87,7 +98,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'ToValue',
@@ -101,7 +112,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'Block',
@@ -118,7 +129,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     args2: [],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Arg1Control',
@@ -148,7 +159,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'LogicRead',
@@ -173,7 +184,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.io,
   },
   {
     type: 'LogicWrite',
@@ -198,7 +209,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.io,
   },
   {
     type: 'LogicDraw',
@@ -279,7 +290,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.io,
   },
   {
     type: 'LogicPrint',
@@ -294,7 +305,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.io,
   },
   { type: 'LogicDrawFlush',
     message0: '输出绘制 %1',
@@ -308,7 +319,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'LogicPrintFlush',
@@ -323,7 +334,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'LogicGetLink',
@@ -343,7 +354,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'LogicControl',
@@ -405,7 +416,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'LogicRadar',
@@ -450,7 +461,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'SensorOptions',
@@ -510,7 +521,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'LogicSensor',
@@ -535,7 +546,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.block,
   },
   {
     type: 'LogicSet',
@@ -555,7 +566,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.operation,
   },
   {
     type: 'LogicOp',
@@ -626,7 +637,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.operation,
   },
   {
     type: 'LogicLookup',
@@ -656,7 +667,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.operation,
   },
   {
     type: 'LogicPackColor',
@@ -691,7 +702,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.operation,
   },
   {
     type: 'LogicWait',
@@ -706,7 +717,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.control,
   },
   {
     type: 'LogicStop',
@@ -715,7 +726,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.control,
   },
   {
     type: 'LogicEnd',
@@ -724,7 +735,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.control,
   },
   {
     type: 'Label',
@@ -739,7 +750,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'CmpNot',
@@ -752,7 +763,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'Cmper',
@@ -786,13 +797,13 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'CmpAlways',
     message0: '永真比较',
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'ItemVar',
@@ -829,7 +840,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'UnitVar',
@@ -908,7 +919,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'BlockVar',
@@ -1303,7 +1314,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'LiquidVar',
@@ -1329,7 +1340,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     inputsInline: true,
     output: ['Var', 'Value'],
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'LogicUnitBind',
@@ -1344,7 +1355,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.unit,
   },
   {
     type: 'LogicUnitControl',
@@ -1425,7 +1436,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.unit,
   },
   {
     type: 'LogicUnitRadar',
@@ -1465,7 +1476,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.unit,
   },
   {
     type: 'LogicUnitLocate',
@@ -1558,7 +1569,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.unit,
   },
   {
     type: 'DoWhile',
@@ -1580,7 +1591,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Goto',
@@ -1600,7 +1611,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Source',
@@ -1613,7 +1624,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Else',
@@ -1627,7 +1638,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'DExp',
@@ -1644,14 +1655,14 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'ResultHandle',
     message0: '返回句柄 $',
     args0: [],
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'Const',
@@ -1671,7 +1682,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'Take',
@@ -1691,7 +1702,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     inputsInline: true,
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'QuickTake',
@@ -1754,7 +1765,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: 'Value',
-    colour: 110,
+    colour: color.var,
   },
   {
     type: 'SwitchCase',
@@ -1768,7 +1779,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'ControlPlus',
@@ -1790,7 +1801,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'ControlBlock',
@@ -1825,7 +1836,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message2: '}',
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
   {
     type: 'InlineBlock',
@@ -1840,6 +1851,6 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message2: '}',
     previousStatement: null,
     nextStatement: null,
-    colour: 250,
+    colour: color.bang,
   },
 ]);
