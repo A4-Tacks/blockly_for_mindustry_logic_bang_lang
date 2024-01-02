@@ -137,7 +137,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'Logic',
+      name: 'LogicIO',
       contents: [
         {
           kind: 'block',
@@ -155,6 +155,12 @@ export const toolbox = {
           kind: 'block',
           type: 'LogicPrint',
         },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'LogicBlock',
+      contents: [
         {
           kind: 'block',
           type: 'LogicDrawFlush',
@@ -179,6 +185,12 @@ export const toolbox = {
           kind: 'block',
           type: 'LogicSensor',
         },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'LogicOperation',
+      contents: [
         {
           kind: 'block',
           type: 'LogicSet',
@@ -195,6 +207,12 @@ export const toolbox = {
           kind: 'block',
           type: 'LogicPackColor',
         },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'LogicControl',
+      contents: [
         {
           kind: 'block',
           type: 'LogicWait',
@@ -207,6 +225,12 @@ export const toolbox = {
           kind: 'block',
           type: 'LogicEnd',
         },
+      ],
+    },
+    {
+      kind: 'category',
+      name: 'LogicUnit',
+      contents: [
         {
           kind: 'block',
           type: 'LogicUnitBind',
