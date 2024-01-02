@@ -137,7 +137,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'LogicIO',
+      name: 'Logic 输入 & 输出',
       contents: [
         {
           kind: 'block',
@@ -159,7 +159,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'LogicBlock',
+      name: 'Logic 方块控制',
       contents: [
         {
           kind: 'block',
@@ -189,7 +189,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'LogicOperation',
+      name: 'Logic 操作',
       contents: [
         {
           kind: 'block',
@@ -211,7 +211,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'LogicControl',
+      name: 'Logic 流程控制',
       contents: [
         {
           kind: 'block',
@@ -229,7 +229,7 @@ export const toolbox = {
     },
     {
       kind: 'category',
-      name: 'LogicUnit',
+      name: 'Logic 单位控制',
       contents: [
         {
           kind: 'block',
