@@ -38,15 +38,18 @@ function setLabelSerializables(block, argsmap, argslen, name) {
 
 /**
  * fmt
+ * %% => 字面量百分号
  * %s => 原样写入
  * %v => 单引号包裹
  * %r => 反引号包裹
  * %R => 反引号加单引号包裹
+ * %a => 原样写入, 但是如果为空则填入0
+ * %A => 原样写入, 但是如果为空则填入反引号包裹的0
  */
 function logic_fmt(fmtter, ...args) {
   const f = name => `${name}`.replace(RegExp("'", 'g'), '"');
   let id = 0;
-  const result = fmtter.replace(/%[svrR]/g, s => {
+  const result = fmtter.replace(/%[svrR%aA]/g, s => {
     switch (s[1]) {
       case 's':
         return `${args[id++]}`;
@@ -56,6 +59,12 @@ function logic_fmt(fmtter, ...args) {
         return `\`${args[id++]}\``;
       case 'R':
         return `\`'${f(args[id++])}'\``;
+      case '%':
+        return '%';
+      case 'a':
+        return `${args[id++]}` || '0';
+      case 'A':
+        return `${args[id++]}` || '`0`';
     }
   });
   if (id != args.length)
@@ -89,10 +98,14 @@ bangGenerator.forBlock['Var'] = function(block, generator) {
   if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
   const reg = src => RegExp(src, 'g');
   const field = block.getField('NAME');
-  const name = field.getValue();
+  let name = field.getValue();
   field.setValue(name.replace(reg('"'), "'"));
-  const replaced_name = name.replace(reg("'"), '"');
-  return [`'${replaced_name}'`, Order.ATOMIC];
+  name = field.getValue();
+  if (!name) {
+    field.setValue('0');
+    return bangGenerator.forBlock['Var'](block, generator);
+  }
+  return [logic_fmt('%v', name), Order.ATOMIC];
 };
 
 bangGenerator.forBlock['String'] = function(block, generator) {
@@ -142,7 +155,7 @@ bangGenerator.forBlock['LogicRead'] = function(block, generator) {
     'MEMORY',
     'ADDRESS',
   );
-  return logic_fmt('%r %s %s %s;', 'read', result, memory, address);
+  return logic_fmt('%r %A %A %A;', 'read', result, memory, address);
 };
 
 bangGenerator.forBlock['LogicWrite'] = function(block, generator) {
@@ -154,7 +167,7 @@ bangGenerator.forBlock['LogicWrite'] = function(block, generator) {
     'MEMORY',
     'ADDRESS',
   );
-  return logic_fmt('%r %s %s %s;', 'write', value, memory, address);
+  return logic_fmt('%r %A %A %A;', 'write', value, memory, address);
 };
 
 bangGenerator.forBlock['LogicDraw'] = function(block, generator) {
@@ -207,7 +220,7 @@ bangGenerator.forBlock['LogicDraw'] = function(block, generator) {
       set_texts(['x', 'y', 'image', 'size', 'rotation', '']);
       break;
   }
-  return logic_fmt('%r %s %s %s %s %s %s %s;',
+  return logic_fmt('%r %r %A %A %A %A %A %A;',
     'draw', type, arg1, arg2, arg3, arg4, arg5, arg6);
 };
 
@@ -218,7 +231,7 @@ bangGenerator.forBlock['LogicPrint'] = function(block, generator) {
     block,
     'VALUE',
   );
-  return logic_fmt('%R %s;', 'print', value);
+  return logic_fmt('%R %A;', 'print', value);
 };
 
 bangGenerator.forBlock['LogicDrawFlush'] = function(block, generator) {
@@ -228,7 +241,7 @@ bangGenerator.forBlock['LogicDrawFlush'] = function(block, generator) {
     block,
     'VALUE',
   );
-  return logic_fmt('%r %s;', 'drawflush', value);
+  return logic_fmt('%r %A;', 'drawflush', value);
 };
 
 bangGenerator.forBlock['LogicPrintFlush'] = function(block, generator) {
@@ -238,7 +251,7 @@ bangGenerator.forBlock['LogicPrintFlush'] = function(block, generator) {
     block,
     'VALUE',
   );
-  return logic_fmt('%r %s;', 'printflush', value);
+  return logic_fmt('%r %A;', 'printflush', value);
 };
 
 bangGenerator.forBlock['LogicGetLink'] = function(block, generator) {
@@ -249,7 +262,7 @@ bangGenerator.forBlock['LogicGetLink'] = function(block, generator) {
     'RESULT',
     'VALUE',
   );
-  return logic_fmt('%r %s %s;', 'getlink', result, value);
+  return logic_fmt('%r %A %A;', 'getlink', result, value);
 };
 
 bangGenerator.forBlock['LogicControl'] = function(block, generator) {
@@ -283,7 +296,7 @@ bangGenerator.forBlock['LogicControl'] = function(block, generator) {
       set_texts(['unit', 'shoot', '', '']);
       break;
   }
-  return logic_fmt('%r %s %s %s %s %s %s;',
+  return logic_fmt('%r %r %A %A %A %A %A;',
     'control', type, arg1, arg2, arg3, arg4, arg5);
 };
 
@@ -303,7 +316,7 @@ bangGenerator.forBlock['LogicRadar'] = function(block, generator) {
     'ORDER',
     'OUTPUT',
   );
-  return logic_fmt('%r %r %r %r %r %s %s %s;', 'radar', tg1, tg2, tg3, sort, from, ord, out);
+  return logic_fmt('%r %r %r %r %r %A %A %A;', 'radar', tg1, tg2, tg3, sort, from, ord, out);
 };
 
 bangGenerator.forBlock['SensorOptions'] = function(block, generator) {
@@ -321,7 +334,7 @@ bangGenerator.forBlock['LogicSensor'] = function(block, generator) {
     'OPTION',
     'TARGET',
   );
-  return logic_fmt('%r %s %s %s;', 'sensor', result, target, option);
+  return logic_fmt('%r %A %A %A;', 'sensor', result, target, option);
 };
 
 bangGenerator.forBlock['LogicSet'] = function(block, generator) {
@@ -332,7 +345,7 @@ bangGenerator.forBlock['LogicSet'] = function(block, generator) {
     'RESULT',
     'TARGET',
   );
-  return logic_fmt('%R %s %s;', 'set', result, target);
+  return logic_fmt('%R %A %A;', 'set', result, target);
 };
 
 bangGenerator.forBlock['LogicOp'] = function(block, generator) {
@@ -345,7 +358,7 @@ bangGenerator.forBlock['LogicOp'] = function(block, generator) {
     'ARG1',
     'ARG2',
   );
-  return logic_fmt('%R %R %s %s %s;', 'op', oper, result, arg1, arg2);
+  return logic_fmt('%R %R %A %A %A;', 'op', oper, result, arg1, arg2);
 };
 
 bangGenerator.forBlock['LogicLookup'] = function(block, generator) {
@@ -357,7 +370,7 @@ bangGenerator.forBlock['LogicLookup'] = function(block, generator) {
     'RESULT',
     'ID',
   );
-  return logic_fmt('%r %r %s %s;', 'lookup', type, result, id);
+  return logic_fmt('%r %r %A %A;', 'lookup', type, result, id);
 };
 
 bangGenerator.forBlock['LogicPackColor'] = function(block, generator) {
@@ -371,7 +384,7 @@ bangGenerator.forBlock['LogicPackColor'] = function(block, generator) {
     'B',
     'A',
   );
-  return logic_fmt('%r %s %s %s %s %s;', 'packcolor', result, r, g, b, a);
+  return logic_fmt('%r %A %A %A %A %A;', 'packcolor', result, r, g, b, a);
 };
 
 bangGenerator.forBlock['LogicWait'] = function(block, generator) {
@@ -381,7 +394,7 @@ bangGenerator.forBlock['LogicWait'] = function(block, generator) {
     block,
     'TIME',
   );
-  return logic_fmt('%r %s;', 'wait', time);
+  return logic_fmt('%r %A;', 'wait', time);
 };
 
 bangGenerator.forBlock['LogicStop'] = function(_block, _generator) {
@@ -399,7 +412,7 @@ bangGenerator.forBlock['Label'] = function(block, generator) {
     block,
     'LABEL',
   );
-  return logic_fmt(':%s', label);
+  return logic_fmt(':%a', label);
 };
 
 bangGenerator.forBlock['CmpNot'] = function(block, generator) {
@@ -460,7 +473,7 @@ bangGenerator.forBlock['LogicUnitBind'] = function(block, generator) {
     block,
     'VALUE',
   );
-  return logic_fmt('%r %s;', 'ubind', value);
+  return logic_fmt('%r %A;', 'ubind', value);
 };
 
 bangGenerator.forBlock['LogicUnitControl'] = function(block, generator) {
@@ -504,7 +517,7 @@ bangGenerator.forBlock['LogicUnitControl'] = function(block, generator) {
     i => `ARG${i+1}S`,
   );
   set_texts(type);
-  return logic_fmt('%r %s %s %s %s %s %s;',
+  return logic_fmt('%r %r %A %A %A %A %A;',
     'ucontrol', type, arg1, arg2, arg3, arg4, arg5);
 };
 
@@ -523,7 +536,7 @@ bangGenerator.forBlock['LogicUnitRadar'] = function(block, generator) {
     'ORDER',
     'OUTPUT',
   );
-  return logic_fmt('%r %r %r %r %r %r %s %s;', 'uradar', tg1, tg2, tg3, sort, 0, ord, out);
+  return logic_fmt('%r %r %r %r %r %r %A %A;', 'uradar', tg1, tg2, tg3, sort, 0, ord, out);
 };
 
 bangGenerator.forBlock['LogicUnitLocate'] = function(block, generator) {
@@ -552,7 +565,7 @@ bangGenerator.forBlock['LogicUnitLocate'] = function(block, generator) {
     i => `ARG${i+1}S`,
   );
   set_texts(type);
-  return logic_fmt('%r %r %r %s %s %s %s %s %s;',
+  return logic_fmt('%r %r %r %A %A %A %A %A %A;',
     'ulocate', type, group,
     arg2, arg3, arg4,
     arg5, arg6, arg7
@@ -569,7 +582,7 @@ bangGenerator.forBlock['DoWhile'] = function(block, generator) {
 bangGenerator.forBlock['Goto'] = function(block, generator) {
   if (! (block instanceof Blockly.Block && generator instanceof Blockly.CodeGenerator)) return;
   const [label, value] = valueToCodes(generator, block, 'LABEL', 'VALUE');
-  return logic_fmt('goto :%s %s;', label, value);
+  return logic_fmt('goto :%a %A;', label, value);
 };
 
 bangGenerator.forBlock['Source'] = function(block, generator) {
