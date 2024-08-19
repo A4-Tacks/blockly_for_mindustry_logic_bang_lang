@@ -42,3 +42,7 @@ pre, code {
   font-family: "Gill Sans Extrabold", monospace;
   outline-style: inset;
 }
+
+.blocklyTreeLabel {
+  font-family: monospace;
+}
