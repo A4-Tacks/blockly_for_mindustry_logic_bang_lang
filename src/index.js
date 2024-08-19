@@ -23,6 +23,10 @@ const exportDataButton = document.getElementById('exportData');
 const dataInputBox = document.getElementById('dataInputBox');
 const workspace = Blockly.inject(blocklyDiv, {toolbox});
 
+const theme = workspace.getTheme();
+theme.fontStyle.family = "monospace";
+workspace.setTheme(theme);
+
 // This function resets the code div and shows the
 // generated code from the workspace.
 const runCode = () => {
