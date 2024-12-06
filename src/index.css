@@ -1,10 +1,30 @@
 body {
     margin: 0;
     max-width: 100vw;
+    background-color: #242424;
+    color: #FFFFFF;
 }
 
 pre, code {
     overflow: auto;
+}
+
+.blocklySvg {
+    background-color: #242424;
+}
+
+.blocklyToolboxDiv {
+    background-color: #18181A;
+    color: #FFFFFF;
+}
+
+.blocklyFlyoutBackground {
+    fill: #303030;
+}
+
+input {
+    background-color: #303030;
+    color: #FFFFFF;
 }
 
 #pageContainer {
@@ -31,7 +51,8 @@ pre, code {
 
 #generatedCode {
     height: 50%;
-    background-color: rgb(247, 240, 228);
+    background-color: #18181A;
+    color: #FFFFFF;
 }
 
 #output {
@@ -39,10 +60,12 @@ pre, code {
 }
 
 #dataInputBox {
-  font-family: "Gill Sans Extrabold", monospace;
-  outline-style: inset;
+    font-family: "Gill Sans Extrabold", monospace;
+    outline-style: inset;
+    background-color: #18181A;
+    color: #FFFFFF;
 }
 
 .blocklyTreeLabel {
-  font-family: monospace;
+    font-family: monospace;
 }
