@@ -420,7 +420,7 @@ export const blocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'LogicRadar',
-    message0: '雷达 从%1条件%2且%3且%4是否正序%5排序依据%6输出量%7',
+    message0: '雷达 从%1条件%2且%3且%4是否逆序%5排序依据%6输出量%7',
     args0: [
       {
         type: 'input_value',
