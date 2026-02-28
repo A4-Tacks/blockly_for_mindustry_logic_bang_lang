@@ -3,6 +3,9 @@
 其目的是为了使用图形编辑器生成 [MindustryLogicBangLang] 的代码,
 因为直接编写bang语言很多时候需要打开逻辑语言的编辑器查看参数, 会很不方便
 
+> [!IMPORTANT]
+> 这个项目较为鸡肋, 作者本人都从来不用, 在给 bang 编写了完善的代码片段和语言服务器后更鸡肋了
+
 [custom-generator-codelab]: https://github.com/google/blockly-samples/tree/a662278cb9c511e001ee3cd2977a891976ea06a9/examples/custom-generator-codelab
 [MindustryLogicBangLang]: https://github.com/A4-Tacks/mindustry_logic_bang_lang
 
